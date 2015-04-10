@@ -1,0 +1,20 @@
+<div>
+
+  <div class="row userTitle_and_addButton">
+    <div class="small-2 large-4 large-offset-4 columns">
+      <h3>Users</h3>
+    </div>
+    <div class="small-2 large-4 columns">
+      <a class="button success" ng-href="#/addUser">Add User</a>
+    </div>
+  </div>
+  
+  <div class="row userList" ng-repeat="person in users">
+    <div class="small-2 large-4 columns">{{person.name}}</div>
+    <div class="small-2 large-4 columns">{{person.email}}</div>
+    <div class="small-2 large-4 columns">
+      <a class="button alert">Delete</a>
+    </div>
+  </div>
+
+</div>

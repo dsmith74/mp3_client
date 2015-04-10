@@ -19,4 +19,19 @@ angular.module('demoServices', [])
             }
         }
     })
+    .factory('API', function($http, $window) {
+        return {
+            getUsers: function() {
+                var baseUrl = $window.sessionStorage.baseurl;
+                return $http.get(baseUrl + '/api/users')
+                    .then(function (response) {
+                        return response.data.data;
+                    }, function (response) {
+                        console.log("Error");
+                        console.log(response);
+                        console.log(response.data);
+                    });
+            }
+        }
+    })
     ;
