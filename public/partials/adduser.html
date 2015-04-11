@@ -1,23 +1,35 @@
 <div>
 	<h3 class="add_user_title">Add User</h3>
-	<form>
+	<form data-abide>
 		<div class="row">
 			<div class="large-7 large-centered columns">
 				<label>Name<span class="required">*</span>
-					<input type="text" ng-model="name">
+					<input type="text" ng-model="name" required pattern="[a-zA-Z ]+">
 				</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="large-7 large-centered columns">
 				<label>Email<span class="required">*</span>
-					<input type="text" ng-model="email">
+					<input type="email" ng-model="email" required>
 				</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="large-7 large-centered columns">
 				<button class="button info" ng-click="submitUser()">Submit</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-7 large-centered columns">
+				<div data-alert class="alert-box success" ng-show="successMessage">
+				  User Successfully Added
+				  <a class="close" ng-click="toggleSuccessMessage()">&times;</a>
+				</div>
+				<div data-alert class="alert-box alert" ng-show="errorMessage">
+				  This email already exists. Email must be unique!
+				  <a class="close" ng-click="toggleErrorMessage()">&times;</a>
+				</div>
 			</div>
 		</div>
 	</form>

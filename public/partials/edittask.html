@@ -1,0 +1,66 @@
+<div>
+	<h3 class="edit_task_title">Edit Task</h3>
+	<form data-abide>
+		<div class="row">
+			<div class="large-7 large-centered columns">
+				<label>Name<span class="required">*</span>
+					<input type="text" ng-model="name" required>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-7 large-centered columns">
+				<label>Description
+					<input type="text" ng-model="description">
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-7 large-centered columns">
+				<label>Deadline<span class="required">*</span>
+					<input type="datetime" ng-model="deadline" required>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-7 large-centered columns">
+				<label>Assigned User
+					<!--<input type="text" ng-model="assignedUserName">-->
+					<select id="edit_task_selected_user">
+						<option ng-repeat="person in users" value="assignedUserName">{{person.name}}</option>
+					</select>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-7 large-centered columns">
+				<label>
+					Completed
+					<input type="radio" id="task_complete_radio_true" ng-click="toggleCompleted()"><label>Yes</label>
+		      		<input type="radio" id="task_complete_radio_false" ng-click="toggleCompleted()"><label>No</label>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-7 large-centered columns">
+				<button class="button info" ng-click="editTask()">Submit</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="large-7 large-centered columns">
+				<div data-alert class="alert-box success" ng-show="successMessage">
+				  Task Successfully Edited
+				  <a class="close" ng-click="toggleSuccessMessage()">&times;</a>
+				</div>
+				<div data-alert class="alert-box alert" ng-show="dateErrorMessage">
+				  Invalid Date!
+				  <a class="close" ng-click="toggleDateErrorMessage()">&times;</a>
+				</div>
+				<div data-alert class="alert-box alert" ng-show="dbErrorMessage">
+				  Failure to Update Task
+				  <a class="close" ng-click="toggleDBErrorMessage()">&times;</a>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

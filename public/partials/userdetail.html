@@ -1,0 +1,33 @@
+<div>
+	<div class="row">
+		<div class="small-2 large-4 columns"><h3>User Profile</h3></div>
+	</div>
+
+	<div class="row">
+		<div class="small-2 large-4 columns">{{name}}</div>
+		<div class="small-2 large-4 columns">{{email}}</div>
+	</div>
+
+	<div class="row">
+		<div class="small-2 large-4 columns"><h4>Pending Tasks</h4></div>
+	</div>
+
+	<div class="row" ng-repeat="tasks in pendingTasks">
+		<div class="small-2 large-4 columns">{{tasks.name}}</div>
+		<div class="small-2 large-4 columns">Deadline: {{tasks.deadline}}</div>
+		<div class="small-2 large-4 columns">
+			<a class="button" ng-click="changeTaskStatus(tasks._id)">Completed</a>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="small-2 large-12 columns">
+			<button ng-click="toggleCompleted()">Show Completed Tasks</button>
+		</div>
+	</div>
+
+	<div class="row" ng-repeat="tasks in completedTasks" ng-show="showCompleted">
+		<div class="small-2 large-4 columns">{{tasks.name}}</div>
+		<div class="small-2 large-4 columns">Deadline: {{tasks.deadline}}</div>
+	</div>
+</div>

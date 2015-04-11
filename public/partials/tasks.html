@@ -1,3 +1,62 @@
-<div class="list" ng-controller='TasksController'>		
-  Tasks Controller
+<div>		
+
+  <div class="row taskTitle_and_addButton">
+    <div class="small-2 large-4 large-offset-4 columns">
+      <h3>Tasks</h3>
+    </div>
+    <div class="small-2 large-4 columns">
+      <a class="button success" ng-href="#/addTask">Add Task</a>
+    </div>
+    <form>
+    	<div class="row">
+		    <div class="large-4 columns">
+		      <input type="radio" ng-model="tasksType" value="pending" ng-change='getTasks(tasksType)'><label>Pending</label>
+		      <input type="radio" ng-model="tasksType" value="completed" ng-change='getTasks(tasksType)'><label>Completed</label>
+		      <input type="radio" ng-model="tasksType" value="all" ng-change='getTasks(tasksType)'><label>All</label>
+		    </div>
+		    <div class="large-4 columns">
+		      <label>Sort by:
+		        <select>
+		          <option ng-model ="sortOrder" value="dateCreated">dateCreated</option>
+		          <option ng-model ="sortOrder" value="deadline">deadline</option>
+		          <option ng-model ="sortOrder" value="name">name</option>
+		          <option ng-model ="sortOrder" value="assignedUserName">assignedUserName</option>
+		        </select>
+		      </label>
+		    </div>
+		    <div class="large-4 columns">
+		    	<div class="row">
+			        <div class="small-6 columns">
+				      <input type="radio" ng-model="direction" name="direction" checked><label>Ascending</label>
+			        </div>
+			    </div>
+			    <div class="row">
+			        <div class="small-6 columns">
+				      <input type="radio" ng-model="direction" name="direction" value="reverse"><label>Descending</label>
+			        </div>
+			    </div>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="large-6 columns"><button ng-click="previousPage()">Previous</button></div>
+			<div class="large-6 columns"><button ng-click="nextPage()">Next</button></div>
+		</div>
+    </form>
+  </div>
+
+  <div class="row taskList" ng-repeat="task in selectedTasks | orderBy: sortOrder:direction">
+    <div class="small-2 large-4 columns"><a ng-href='#/tasks/{{task._id}}'>{{task.name}}</a></div>
+    <div class="small-2 large-6 columns">
+    	<div class="row">
+    		<div class="small-10 columns">Deadline: {{task.deadline}}</div>
+    	</div>
+    	<div class="row">
+    		<div class="small-10 columns">Assigned to {{task.assignedUserName}}</div>
+    	</div>
+    </div>
+    <div class="small-2 large-2 columns">
+      <a class="button alert" ng-click="deleteTask(task._id)">Delete</a>
+    </div>
+  </div>
+
 </div>

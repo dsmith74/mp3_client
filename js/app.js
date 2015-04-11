@@ -24,6 +24,18 @@ demoApp.config(['$routeProvider', function($routeProvider) {
     templateUrl: './partials/adduser.html',
     controller: 'AddUserController'
   }).
+  when ('/users/:id', {
+    templateUrl: './partials/userdetail.html',
+    controller: 'UserDetailController'
+  }).
+  when('/tasks/:id', {
+    templateUrl: './partials/taskdetail.html',
+    controller: 'TaskDetailController'
+  }).
+  when('/editTasks/:id', {
+    templateUrl: './partials/edittask.html',
+    controller: 'EditTaskController'
+  }).
   otherwise({
     redirectTo: '/settings'
   });
